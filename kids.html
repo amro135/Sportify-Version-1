@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportify - Kids</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===================== Global ===================== */
+        * { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; }
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg,#0f1112 0%, #1a1b1c 100%);
+            color: #e6e7e8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* ===================== Mock Container ===================== */
+        .mock {
+            margin-top: 40px;
+            width: 950px;
+            max-width: 95vw;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(2,6,10,0.6);
+            background: linear-gradient(180deg,#0e0f10 0%, #111213 100%);
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* ===================== Header ===================== */
+        header {
+            padding: 18px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #e63946;
+        }
+        .brand .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .icon {
+            background: #1a1a1a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .icon:hover {
+            background: #e63946;
+            transform: scale(1.1);
+        }
+
+        /* ===================== Hero ===================== */
+        .hero {
+            background: linear-gradient(45deg, rgba(74,144,226,0.2), rgba(0,0,0,0.8)), url('images/kids-hero-image.jpg') center/cover no-repeat;
+            height: 280px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 34px 48px;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.85) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 38px;
+            line-height: 1.02;
+            letter-spacing: 0.6px;
+        }
+        .hero p {
+            margin: 12px 0 0;
+            color: #9aa0a6;
+        }
+
+        /* ===================== Main ===================== */
+        .main {
+            padding: 28px 36px 40px;
+        }
+        h3.section {
+            font-size: 15px;
+            margin: 0 0 14px;
+            color: #fff;
+        }
+
+        /* ===================== Products ===================== */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .card {
+            background: #1b1d1f;
+            padding: 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+        }
+        .card .img {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .card .img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .card .title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #e9eaeb;
+            margin-top: 8px;
+        }
+        .card .price {
+            font-weight: 700;
+            color: #e63946;
+            margin-bottom: 12px;
+        }
+
+        /* ===================== Footer ===================== */
+        footer {
+            padding: 20px 36px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            color: #9aa0a6;
+            font-size: 13px;
+        }
+
+        /* ===================== Responsive ===================== */
+        @media (max-width:900px){
+            .products { grid-template-columns: repeat(2,1fr); }
+            .hero { height: 240px; }
+        }
+        @media (max-width:520px){
+            .products { grid-template-columns: 1fr; }
+            header { padding: 12px; }
+            .mock { width: 100%; }
+            .hero { height: 220px; padding: 18px; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+  <div class="mock" role="main">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <a href="homepage.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <div class="logo"><img src="images/logo2.png" alt="Sportify Logo"></div>
+            <div>SPORTIFY</div>
+        </a>
+        </div>
+      <div class="icons">
+        <div class="icon" title="Shopping Cart">🛒</div>
+        <div class="icon" title="My Account">👤</div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <h1>FUEL THEIR<br/>ADVENTURE</h1>
+        <p>Durable, comfortable gear for active kids. Designed to keep up with their endless energy.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- Featured Products -->
+      <h3 class="section">KIDS ATHLETIC GEAR</h3>
+      <div class="products" role="list">
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Running Shoes.jpg" alt="Kids Running Shoes"></div>
+          <div class="title">Kids Running Shoes</div>
+          <div class="price">$39.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Athletic Shorts.jpg" alt="Kids Athletic Shorts"></div>
+          <div class="title">Kids Athletic Shorts</div>
+          <div class="price">$18.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sports T-Shirt.jpg" alt="Kids Sports T-Shirt"></div>
+          <div class="title">Kids Sports T-Shirt</div>
+          <div class="price">$16.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Basketball Shoes.jpg" alt="Kids Basketball Shoes"></div>
+          <div class="title">Kids Basketball Shoes</div>
+          <div class="price">$44.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Hooded Jacket.jpg" alt="Kids Hooded Jacket"></div>
+          <div class="title">Kids Hooded Jacket</div>
+          <div class="price">$32.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Leggings.jpg" alt="Kids Leggings"></div>
+          <div class="title">Kids Leggings</div>
+          <div class="price">$22.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Athletic Socks (5-Pack).jpg" alt="Kids Athletic Socks (5-Pack)"></div>
+          <div class="title">Kids Athletic Socks (5-Pack)</div>
+          <div class="price">$14.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Soccer Cleats.jpg" alt="Kids Soccer Cleats"></div>
+          <div class="title">Kids Soccer Cleats</div>
+          <div class="price">$49.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sweatpants.jpg" alt="Kids Sweatpants"></div>
+          <div class="title">Kids Sweatpants</div>
+          <div class="price">$24.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Baseball Cap.jpg" alt="Kids Baseball Cap"></div>
+          <div class="title">Kids Baseball Cap</div>
+          <div class="price">$12.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Swim Trunks.jpg" alt="Kids Swim Trunks"></div>
+          <div class="title">Kids Swim Trunks</div>
+          <div class="price">$19.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Tennis Shoes.jpg" alt="Kids Tennis Shoes"></div>
+          <div class="title">Kids Tennis Shoes</div>
+          <div class="price">$36.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Fleece Hoodie.jpg" alt="Kids Fleece Hoodie"></div>
+          <div class="title">Kids Fleece Hoodie</div>
+          <div class="price">$28.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Track Pants.jpg" alt="Kids Track Pants"></div>
+          <div class="title">Kids Track Pants</div>
+          <div class="price">$26.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sports Bag.jpg" alt="Kids Sports Bag"></div>
+          <div class="title">Kids Sports Bag</div>
+          <div class="price">$21.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Skate Shoes.jpg" alt="Kids Skate Shoes"></div>
+          <div class="title">Kids Skate Shoes</div>
+          <div class="price">$42.99</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © <span id="year"></span> Sportify • Built with a pixel-perfect mock
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportify - Women</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===================== Global ===================== */
+        * { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; }
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg,#0f1112 0%, #1a1b1c 100%);
+            color: #e6e7e8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* ===================== Mock Container ===================== */
+        .mock {
+            margin-top: 40px;
+            width: 950px;
+            max-width: 95vw;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(2,6,10,0.6);
+            background: linear-gradient(180deg,#0e0f10 0%, #111213 100%);
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* ===================== Header ===================== */
+        header {
+            padding: 18px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #e63946;
+        }
+        .brand .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .icon {
+            background: #1a1a1a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .icon:hover {
+            background: #e63946;
+            transform: scale(1.1);
+        }
+
+        /* ===================== Hero ===================== */
+        .hero {
+            background: linear-gradient(45deg, rgba(230,57,70,0.2), rgba(0,0,0,0.8)), url('images/women-hero-2.jpg') center/cover no-repeat;
+            height: 280px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 34px 48px;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.85) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 38px;
+            line-height: 1.02;
+            letter-spacing: 0.6px;
+        }
+        .hero p {
+            margin: 12px 0 0;
+            color: #9aa0a6;
+        }
+
+        /* ===================== Main ===================== */
+        .main {
+            padding: 28px 36px 40px;
+        }
+        h3.section {
+            font-size: 15px;
+            margin: 0 0 14px;
+            color: #fff;
+        }
+
+        /* ===================== Products ===================== */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .card {
+            background: #1b1d1f;
+            padding: 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+        }
+        .card .img {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .card .img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #2a2a2a;
+        }
+        .card .title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #e9eaeb;
+            margin-top: 8px;
+        }
+        .card .price {
+            font-weight: 700;
+            color: #e63946;
+            margin-bottom: 12px;
+        }
+
+        /* ===================== Footer ===================== */
+        footer {
+            padding: 20px 36px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            color: #9aa0a6;
+            font-size: 13px;
+        }
+
+        /* ===================== Responsive ===================== */
+        @media (max-width:900px){
+            .products { grid-template-columns: repeat(2,1fr); }
+            .hero { height: 240px; }
+        }
+        @media (max-width:520px){
+            .products { grid-template-columns: 1fr; }
+            header { padding: 12px; }
+            .mock { width: 100%; }
+            .hero { height: 220px; padding: 18px; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+  <div class="mock" role="main">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+  <a href="homepage.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+    <div class="logo"><img src="images/logo2.png" alt="Sportify Logo"></div>
+    <div>SPORTIFY</div>
+  </a>
+</div>
+      <div class="icons">
+        <div class="icon" title="Shopping Cart">🛒</div>
+        <div class="icon" title="My Account">👤</div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <h1>ELEVATE YOUR<br/>STRENGTH</h1>
+        <p>Premium athletic wear designed for women. Performance meets style in every piece.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- Featured Products -->
+      <h3 class="section">WOMEN'S ATHLETIC GEAR</h3>
+      <div class="products" role="list">
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Performance Sports Bra.jpg" alt="Women's Performance Sports Bra"></div>
+          <div class="title">Women's Performance Sports Bra</div>
+          <div class="price">$32.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's High-Waist Leggings.jpg" alt="Women's High-Waist Leggings"></div>
+          <div class="title">Women's High-Waist Leggings</div>
+          <div class="price">$45.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Running Shorts.jpg" alt="Women's Running Shorts"></div>
+          <div class="title">Women's Running Shorts</div>
+          <div class="price">$28.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Training Shoes.jpg" alt="Women's Training Shoes"></div>
+          <div class="title">Women's Training Shoes</div>
+          <div class="price">$89.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Yoga Set.jpg" alt="Women's Yoga Set"></div>
+          <div class="title">Women's Yoga Set</div>
+          <div class="price">$64.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Compression Top.jpg" alt="Women's Compression Top"></div>
+          <div class="title">Women's Compression Top</div>
+          <div class="price">$38.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Athletic Socks (3-Pack).jpg" alt="Women's Athletic Socks (3-Pack)"></div>
+          <div class="title">Women's Athletic Socks (3-Pack)</div>
+          <div class="price">$19.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Lightweight Jacket.jpg" alt="Women's Lightweight Jacket"></div>
+          <div class="title">Women's Lightweight Jacket</div>
+          <div class="price">$59.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Training Hoodie.jpg" alt="Women's Training Hoodie"></div>
+          <div class="title">Women's Training Hoodie</div>
+          <div class="price">$52.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Breathable Tank.jpg" alt="Women's Breathable Tank"></div>
+          <div class="title">Women's Breathable Tank</div>
+          <div class="price">$26.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Athletic Shorts.jpg" alt="Women's Athletic Shorts"></div>
+          <div class="title">Women's Athletic Shorts</div>
+          <div class="price">$31.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/woman-products/Women's Running Shoes.jpg" alt="Women's Running Shoes"></div>
+          <div class="title">Women's Running Shoes</div>
+          <div class="price">$94.99</div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © <span id="year"></span> Sportify • Built with a pixel-perfect mock
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

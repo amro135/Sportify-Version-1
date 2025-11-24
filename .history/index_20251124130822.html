@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportswear Store - Sign Up</title>
+
+    <!-- =============== CSS STYLE =============== -->
+    <style>
+        /* Overall page styling */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif; /* clean readable font */
+            background: url(images/signup\ bg\ image.png) no-repeat center center/cover; /* background image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main signup container */
+        .signup-container {
+            background: #ffffff10; /* transparent white for modern effect */
+            padding: 40px;
+            width: 350px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px); /* glass effect */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        /* Page title */
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        /* Input fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff20;
+            color: white;
+            outline: none;
+        }
+
+        /* Signup button */
+        .btn-signup {
+            width: 100%;
+            padding: 12px;
+            background: #00aaff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-signup:hover {
+            background: #0088cc;
+        }
+
+        /* Switch page text */
+        .switch {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .switch a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .switch a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =============== SIGNUP BOX =============== -->
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+
+        <!-- Username -->
+        <input type="text" id="signupUsername" placeholder="Username" />
+
+        <!-- Email -->
+        <input type="email" id="signupEmail" placeholder="Email" />
+
+        <!-- Password -->
+        <input type="password" id="signupPassword" placeholder="Password" />
+
+        <!-- Confirm Password -->
+        <input type="password" id="signupConfirm" placeholder="Confirm Password" />
+
+        <!-- Signup button -->
+        <button class="btn-signup" onclick="registerUser()">Create Account</button>
+
+        <!-- Link back to login page -->
+        <div class="switch">
+            Already have an account? <a href="Login.html">Login</a>
+        </div>
+    </div>
+
+    <!-- =============== JAVASCRIPT =============== -->
+    <script>
+        // Placeholder signup JS function
+        function registerUser() {
+            const username = document.getElementById("signupUsername").value;
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            const confirm = document.getElementById("signupConfirm").value;
+
+            if (password !== confirm) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            console.log("Signup info:", username, email, password);
+            alert("Signup function triggered");
+        }
+    </script>
+
+</body>
+</html>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="men.html">Men</a>
+    <a href="women.html">Women</a>
+    <a href="kids.html">Kids</a>
+    <a href="Login.html">Login</a>
+  </nav>
+
+  <!-- Your existing content here -->
+</body>

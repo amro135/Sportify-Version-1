@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportswear Store - Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url(images/bgimage3.jpg) no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .signup-container {
+            background: #ffffff10;
+            padding: 40px;
+            width: 360px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+        h2 { text-align: center; margin-bottom: 25px; font-weight: bold; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff20;
+            color: white;
+            outline: none;
+        }
+        .btn-signup {
+            width: 100%;
+            padding: 12px;
+            background: #00aaff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-signup:hover { background: #0088cc; }
+        .switch {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .switch a { color: #00aaff; text-decoration: none; }
+        .switch a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <input type="text" id="name" placeholder="Full Name" aria-label="Full Name" />
+        <input type="email" id="email" placeholder="Email" aria-label="Email" />
+        <input type="password" id="password" placeholder="Password" aria-label="Password" />
+        <input type="password" id="confirm" placeholder="Confirm Password" aria-label="Confirm Password" />
+        <button class="btn-signup" onclick="signup()">Sign Up</button>
+        <div class="switch">
+            Already have an account? <a href="Login.html">Login</a>
+        </div>
+    </div>
+
+    <script>
+        function signup() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirm").value;
+
+            if (!name) return alert("Please enter your name.");
+            if (!email) return alert("Please enter your email.");
+            if (!password) return alert("Please enter a password.");
+            if (password.length < 6) return alert("Password should be at least 6 characters.");
+            if (password !== confirm) return alert("Passwords do not match.");
+
+            alert("Account created! You can now log in.");
+            window.location.href = "Login.html";
+        }
+
+        document.getElementById("confirm").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                signup();
+            }
+        });
+    </script>
+</body>
+</html>

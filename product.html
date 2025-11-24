@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sportify – Product</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #e33b2d;
+      --muted: #9aa0a6;
+      --card: #1b1d1f;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Montserrat";
+      background: linear-gradient(180deg,#0f1112 0%, #1a1b1c 100%);
+      color: #e6e7e8;
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mock {
+      width: 950px;
+      max-width: 95vw;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(180deg,#0e0f10 0%, #111213 100%);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    header {
+      padding: 20px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--accent);
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      background: #1b1b1b;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: 0.25s;
+    }
+    .icon:hover { background: var(--accent); transform: scale(1.1); }
+
+    .main {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+    }
+
+    .product-img {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 380px;
+      background: black;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 { margin: 0 0 10px; font-size: 30px; }
+    .price { color: var(--accent); font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .desc { font-size: 14px; line-height: 1.5; color: #d3d4d5; margin-bottom: 20px; }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      background: #191a1c;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      background: var(--accent);
+      color: white;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    footer {
+      padding: 20px 36px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mock">
+
+    <!-- Header -->
+    <header>
+      <a class="brand" href="HomePage.html">
+        <img src="images/logo2.png" />
+        SPORTIFY
+      </a>
+
+      <div style="display:flex; gap:10px;">
+        <div class="icon" onclick="window.location.href='cart.html'">🛒</div>
+        <div class="icon" onclick="window.location.href='index.html'">👤</div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="product-img">
+        <img id="pimg" src="" alt="">
+      </div>
+
+      <div>
+        <h1 id="pname"></h1>
+        <div class="price" id="pprice"></div>
+        <p class="desc" id="pdesc"></p>
+
+        <label>Size</label>
+        <select id="psize">
+          <option>S</option><option>M</option><option>L</option><option>XL</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="pqty" value="1" min="1">
+
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Sportify • All Rights Reserved
+    </footer>
+
+  </div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* =====================================================
+        PRODUCT DATABASE
+  ===================================================== */
+  const PRODUCTS = {
+    "mens-pro-fit-running-tee": {
+      name: "Men's Pro-Fit Running Tee",
+      price: 34.99,
+      image: "images/men-products/Men's Pro-Fit Running Tee.jpg",
+      desc: "Lightweight tee with breathable mesh for long runs."
+    },
+    "endurance-precision-shorts": {
+      name: "Men's Endurance Precision Shorts",
+      price: 23.99,
+      image: "images/men-products/Men's Endurance Precision Shorts.jpg",
+      desc: "Moisture-wicking shorts with a secure zip pocket."
+    },
+    "trail-running-joggers": {
+      name: "Men's Trail Running Joggers",
+      price: 42.99,
+      image: "images/men-products/Men's Trail Running Joggers.jpg",
+      desc: "Stretchy joggers with reinforced knees for rugged terrain."
+    },
+    "lightweight-long-distance-shoes": {
+      name: "Lightweight Long-Distance Shoes",
+      price: 42.99,
+      image: "images/men-products/Lightweight Long-Distance Shoes.jpg",
+      desc: "Featherweight cushioning built for long mileage."
+    },
+    "performance-training-hoodie": {
+      name: "Performance Training Hoodie",
+      price: 49.99,
+      image: "images/men-products/Performance Training Hoodie.jpg",
+      desc: "Warm yet breathable hoodie for training in cool weather."
+    },
+    "compression-leggings": {
+      name: "Compression Leggings",
+      price: 29.99,
+      image: "images/men-products/Compression Leggings.jpg",
+      desc: "Compression leggings that support muscles and stay in place."
+    },
+    "mens-athletic-socks-3pack": {
+      name: "Athletic Socks (3-Pack)",
+      price: 18.99,
+      image: "images/men-products/Athletic Socks (3-Pack).jpg",
+      desc: "Breathable arch-support socks in a three-pack."
+    },
+    "waterproof-running-jacket": {
+      name: "Waterproof Running Jacket",
+      price: 64.99,
+      image: "images/men-products/Waterproof Running Jacket.jpg",
+      desc: "Seam-sealed jacket that blocks wind and rain."
+    },
+    "training-shorts": {
+      name: "Training Shorts",
+      price: 26.99,
+      image: "images/men-products/Training Shorts.jpg",
+      desc: "Quick-dry shorts with mesh liner for gym days."
+    },
+    "basketball-shoes": {
+      name: "Basketball Shoes",
+      price: 89.99,
+      image: "images/men-products/Basketball Shoes.jpg",
+      desc: "High-traction court shoes with ankle support."
+    },
+    "gym-bag": {
+      name: "Gym Bag",
+      price: 39.99,
+      image: "images/men-products/Gym Bag.jpg",
+      desc: "Durable gym bag with multiple compartments and water-resistant material."
+    },
+    "baseball-cap": {
+      name: "Baseball Cap",
+      price: 19.99,
+      image: "images/men-products/Baseball Cap.jpg",
+      desc: "Classic cap with a moisture-wicking band."
+    },
+
+    "womens-performance-sports-bra": {
+      name: "Women's Performance Sports Bra",
+      price: 32.99,
+      image: "images/woman-products/Women's Performance Sports Bra.jpg",
+      desc: "High-support bra with breathable mesh panels."
+    },
+    "womens-high-waist-leggings": {
+      name: "Women's High-Waist Leggings",
+      price: 45.99,
+      image: "images/woman-products/Women's High-Waist Leggings.jpg",
+      desc: "High-rise leggings with sculpting stretch fabric."
+    },
+    "womens-running-shorts": {
+      name: "Women's Running Shorts",
+      price: 28.99,
+      image: "images/woman-products/Women's Running Shorts.jpg",
+      desc: "Featherlight shorts with an inner brief for coverage."
+    },
+    "womens-training-shoes": {
+      name: "Women's Training Shoes",
+      price: 89.99,
+      image: "images/woman-products/Women's Training Shoes.jpg",
+      desc: "Responsive cushioning built for cross-training."
+    },
+    "womens-yoga-set": {
+      name: "Women's Yoga Set",
+      price: 64.99,
+      image: "images/woman-products/Women's Yoga Set.jpg",
+      desc: "Comfortable and flexible yoga set designed for daily workouts."
+    },
+    "womens-compression-top": {
+      name: "Women's Compression Top",
+      price: 38.99,
+      image: "images/woman-products/Women's Compression Top.jpg",
+      desc: "Compression top that keeps you cool and dry."
+    },
+    "womens-athletic-socks-3pack": {
+      name: "Women's Athletic Socks (3-Pack)",
+      price: 19.99,
+      image: "images/woman-products/Women's Athletic Socks (3-Pack).jpg",
+      desc: "Soft, cushioned socks with reinforced heel and toe."
+    },
+    "womens-lightweight-jacket": {
+      name: "Women's Lightweight Jacket",
+      price: 59.99,
+      image: "images/woman-products/Women's Lightweight Jacket.jpg",
+      desc: "Packable windbreaker with a water-resistant finish."
+    },
+    "womens-training-hoodie": {
+      name: "Women's Training Hoodie",
+      price: 52.99,
+      image: "images/woman-products/Women's Training Hoodie.jpg",
+      desc: "Cozy hoodie with thumbholes and secure pockets."
+    },
+    "womens-breathable-tank": {
+      name: "Women's Breathable Tank",
+      price: 26.99,
+      image: "images/woman-products/Women's Breathable Tank.jpg",
+      desc: "Breathable tank with sweat-wicking fabric."
+    },
+    "womens-athletic-shorts": {
+      name: "Women's Athletic Shorts",
+      price: 31.99,
+      image: "images/woman-products/Women's Athletic Shorts.jpg",
+      desc: "Stretch-woven shorts that move with every stride."
+    },
+    "womens-running-shoes": {
+      name: "Women's Running Shoes",
+      price: 94.99,
+      image: "images/woman-products/Women's Running Shoes.jpg",
+      desc: "Cushioned running shoes built for daily miles."
+    },
+
+    "kids-running-shoes": {
+      name: "Kids Running Shoes",
+      price: 39.99,
+      image: "images/kids-products/Kids Running Shoes.jpg",
+      desc: "Springy outsole and breathable mesh for daily play."
+    },
+    "kids-athletic-shorts": {
+      name: "Kids Athletic Shorts",
+      price: 18.99,
+      image: "images/kids-products/Kids Athletic Shorts.jpg",
+      desc: "Light shorts with an elastic waistband for easy fit."
+    },
+    "kids-sports-tshirt": {
+      name: "Kids Sports T-Shirt",
+      price: 16.99,
+      image: "images/kids-products/Kids Sports T-Shirt.jpg",
+      desc: "Soft tee with moisture-wicking finish for practice days."
+    },
+    "kids-basketball-shoes": {
+      name: "Kids Basketball Shoes",
+      price: 44.99,
+      image: "images/kids-products/Kids Basketball Shoes.jpg",
+      desc: "Supportive mid-tops for quick cuts on the court."
+    },
+    "kids-hooded-jacket": {
+      name: "Kids Hooded Jacket",
+      price: 32.99,
+      image: "images/kids-products/Kids Hooded Jacket.jpg",
+      desc: "Lightweight jacket with a soft lining for cool mornings."
+    },
+    "kids-leggings": {
+      name: "Kids Leggings",
+      price: 22.99,
+      image: "images/kids-products/Kids Leggings.jpg",
+      desc: "Stretch leggings that stay comfy all day."
+    },
+    "kids-athletic-socks-5pack": {
+      name: "Kids Athletic Socks (5-Pack)",
+      price: 14.99,
+      image: "images/kids-products/Kids Athletic Socks (5-Pack).jpg",
+      desc: "Five-pack of cushioned socks for school and sport."
+    },
+    "kids-soccer-cleats": {
+      name: "Kids Soccer Cleats",
+      price: 49.99,
+      image: "images/kids-products/Kids Soccer Cleats.jpg",
+      desc: "Molded studs for confident grip on the pitch."
+    },
+    "kids-sweatpants": {
+      name: "Kids Sweatpants",
+      price: 24.99,
+      image: "images/kids-products/Kids Sweatpants.jpg",
+      desc: "Cozy joggers with rib cuffs that stay put."
+    },
+    "kids-baseball-cap": {
+      name: "Kids Baseball Cap",
+      price: 12.99,
+      image: "images/kids-products/Kids Baseball Cap.jpg",
+      desc: "Adjustable cap with breathable eyelets."
+    },
+    "kids-swim-trunks": {
+      name: "Kids Swim Trunks",
+      price: 19.99,
+      image: "images/kids-products/Kids Swim Trunks.jpg",
+      desc: "Fast-dry trunks with mesh liner for pool days."
+    },
+    "kids-tennis-shoes": {
+      name: "Kids Tennis Shoes",
+      price: 36.99,
+      image: "images/kids-products/Kids Tennis Shoes.jpg",
+      desc: "Court-ready shoes with a durable toe cap."
+    },
+    "kids-fleece-hoodie": {
+      name: "Kids Fleece Hoodie",
+      price: 28.99,
+      image: "images/kids-products/Kids Fleece Hoodie.jpg",
+      desc: "Warm fleece hoodie for weekend adventures."
+    },
+    "kids-track-pants": {
+      name: "Kids Track Pants",
+      price: 26.99,
+      image: "images/kids-products/Kids Track Pants.jpg",
+      desc: "Light track pants with reflective piping."
+    },
+    "kids-sports-bag": {
+      name: "Kids Sports Bag",
+      price: 21.99,
+      image: "images/kids-products/Kids Sports Bag.jpg",
+      desc: "Compact sports bag sized for kids' gear."
+    },
+    "kids-skate-shoes": {
+      name: "Kids Skate Shoes",
+      price: 42.99,
+      image: "images/kids-products/Kids Skate Shoes.jpg",
+      desc: "Grippy sole and padded collar for skate sessions."
+    }
+  };
+
+
+  /* =====================================================
+        LOAD PRODUCT FROM URL
+  ===================================================== */
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  const product = PRODUCTS[id];
+
+  if (!product) {
+    document.body.innerHTML = "<h1 style='color:white;text-align:center;'>Product Not Found</h1>";
+  } else {
+    document.getElementById("pname").textContent = product.name;
+    document.getElementById("pprice").textContent = "$" + product.price;
+    document.getElementById("pimg").src = product.image;
+    document.getElementById("pdesc").textContent = product.desc;
+  }
+
+  /* =====================================================
+        CART HELPERS
+  ===================================================== */
+  const CART_KEY = "sportify-cart";
+
+  function loadCart() {
+    try {
+      return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCart(items) {
+    localStorage.setItem(CART_KEY, JSON.stringify(items));
+  }
+
+  /* =====================================================
+        ADD TO CART
+  ===================================================== */
+  function addToCart() {
+    if (!product) return;
+    const size = document.getElementById("psize").value;
+    const qtyInput = document.getElementById("pqty");
+    const qty = Math.max(1, parseInt(qtyInput.value || "1", 10));
+
+    const cart = loadCart();
+    const key = `${id}::${size}`;
+    const existing = cart.find((item) => item.key === key);
+
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({
+        key,
+        id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size,
+        qty,
+      });
+    }
+
+    saveCart(cart);
+    alert(`Added ${qty} × ${product.name} (${size}) to cart!`);
+  }
+</script>
+
+</body>
+</html>

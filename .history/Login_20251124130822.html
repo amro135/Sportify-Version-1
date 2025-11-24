@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportswear Store - Login</title>
+
+    <!-- =============== CSS STYLE =============== -->
+    <style>
+        /* Overall page styling */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif; /* clean readable font */
+            background: url(images/bgimage3.jpg) no-repeat center center/cover; /* background image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main login container */
+        .login-container {
+            background: #ffffff10; /* transparent white for modern effect */
+            padding: 40px;
+            width: 350px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px); /* glass effect */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        /* Page title */
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        /* Input fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff20;
+            color: white;
+            outline: none;
+        }
+
+        /* Login button */
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #00aaff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background: #0088cc;
+        }
+
+        /* Switch page text */
+        .switch {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .switch a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .switch a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =============== LOGIN BOX =============== -->
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <!-- Email input -->
+        <input type="email" id="loginEmail" placeholder="Email" aria-label="Email" />
+
+        <!-- Password input -->
+        <input type="password" id="loginPassword" placeholder="Password" aria-label="Password" />
+
+        <!-- Login button -->
+        <!-- The button triggers a frontend-only check and then navigates to HomePage.html -->
+        <button class="btn-login" onclick="loginUser()">Login</button>
+
+        <!-- Link to signup page -->
+        <div class="switch">
+            Don't have an account? <a href="SignUp.html">Sign up</a>
+        </div>
+    </div>
+
+
+    <!-- =============== JAVASCRIPT =============== -->
+    <script>
+        /*
+         * loginUser()
+         * - Collects email/password (frontend only) then redirects to HomePage.html.
+         * - In a real app you would validate inputs and send them to the backend (fetch/XHR).
+         */
+        function loginUser() {
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value;
+
+            // Basic frontend validation
+            if (!email) {
+                alert("Please enter your email.");
+                return;
+            }
+            if (!password) {
+                alert("Please enter your password.");
+                return;
+            }
+
+            console.log("Login attempt (frontend only):", email);
+
+            // Redirect to HomePage.html after (simulated) successful login
+            window.location.href = "HomePage.html";
+        }
+
+        // Allow pressing Enter to submit the form
+        document.getElementById("loginPassword").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                loginUser();
+            }
+        });
+    </script>
+</body>
+</html>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="men.html">Men</a>
+    <a href="women.html">Women</a>
+    <a href="kids.html">Kids</a>
+    <a href="Login.html">Login</a>
+  </nav>
+
+  <!-- Your existing content here -->
+</body>

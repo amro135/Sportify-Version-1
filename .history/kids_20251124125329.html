@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sportify - Women</title>
+    <title>Sportify - Kids</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* ===================== Global ===================== */
@@ -82,7 +82,7 @@
 
         /* ===================== Hero ===================== */
         .hero {
-            background: linear-gradient(45deg, rgba(230,57,70,0.2), rgba(0,0,0,0.8)), url('images/women-hero-2.jpg') center/cover no-repeat;
+            background: linear-gradient(45deg, rgba(74,144,226,0.2), rgba(0,0,0,0.8)), url('images/kids-hero-image.jpg') center/cover no-repeat;
             height: 280px;
             position: relative;
             display: flex;
@@ -138,8 +138,6 @@
             text-align: center;
             transition: transform .18s ease, box-shadow .18s ease;
             cursor: pointer;
-            text-decoration: none;
-            color: inherit;
         }
         .card:hover {
             transform: translateY(-6px);
@@ -157,7 +155,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            background: #2a2a2a;
         }
         .card .title {
             font-weight: 700;
@@ -199,11 +196,11 @@
     <!-- Header -->
     <header>
       <div class="brand">
-  <a href="homepage.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
-    <div class="logo"><img src="images/logo2.png" alt="Sportify Logo"></div>
-    <div>SPORTIFY</div>
-  </a>
-</div>
+        <a href="homepage.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+            <div class="logo"><img src="images/logo2.png" alt="Sportify Logo"></div>
+            <div>SPORTIFY</div>
+        </a>
+        </div>
       <div class="icons">
         <div class="icon" title="Shopping Cart">🛒</div>
         <div class="icon" title="My Account">👤</div>
@@ -213,8 +210,8 @@
     <!-- Hero -->
     <section class="hero" aria-label="Hero">
       <div class="hero-content">
-        <h1>ELEVATE YOUR<br/>STRENGTH</h1>
-        <p>Premium athletic wear designed for women. Performance meets style in every piece.</p>
+        <h1>FUEL THEIR<br/>ADVENTURE</h1>
+        <p>Durable, comfortable gear for active kids. Designed to keep up with their endless energy.</p>
       </div>
     </section>
 
@@ -222,69 +219,88 @@
     <div class="main">
 
       <!-- Featured Products -->
-      <h3 class="section">WOMEN'S ATHLETIC GEAR</h3>
+      <h3 class="section">KIDS ATHLETIC GEAR</h3>
       <div class="products" role="list">
-        <a class="card" href="product.html?id=womens-performance-sports-bra">
-          <div class="img"><img src="images/woman-products/Women's Performance Sports Bra.jpg" alt="Women's Performance Sports Bra"></div>
-          <div class="title">Women's Performance Sports Bra</div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Running Shoes.jpg" alt="Kids Running Shoes"></div>
+          <div class="title">Kids Running Shoes</div>
+          <div class="price">$39.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Athletic Shorts.jpg" alt="Kids Athletic Shorts"></div>
+          <div class="title">Kids Athletic Shorts</div>
+          <div class="price">$18.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sports T-Shirt.jpg" alt="Kids Sports T-Shirt"></div>
+          <div class="title">Kids Sports T-Shirt</div>
+          <div class="price">$16.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Basketball Shoes.jpg" alt="Kids Basketball Shoes"></div>
+          <div class="title">Kids Basketball Shoes</div>
+          <div class="price">$44.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Hooded Jacket.jpg" alt="Kids Hooded Jacket"></div>
+          <div class="title">Kids Hooded Jacket</div>
           <div class="price">$32.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-high-waist-leggings">
-          <div class="img"><img src="images/woman-products/Women's High-Waist Leggings.jpg" alt="Women's High-Waist Leggings"></div>
-          <div class="title">Women's High-Waist Leggings</div>
-          <div class="price">$45.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-running-shorts">
-          <div class="img"><img src="images/woman-products/Women's Running Shorts.jpg" alt="Women's Running Shorts"></div>
-          <div class="title">Women's Running Shorts</div>
-          <div class="price">$28.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-training-shoes">
-          <div class="img"><img src="images/woman-products/Women's Training Shoes.jpg" alt="Women's Training Shoes"></div>
-          <div class="title">Women's Training Shoes</div>
-          <div class="price">$89.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-yoga-set">
-          <div class="img"><img src="images/woman-products/Women's Yoga Set.jpg" alt="Women's Yoga Set"></div>
-          <div class="title">Women's Yoga Set</div>
-          <div class="price">$64.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-compression-top">
-          <div class="img"><img src="images/woman-products/Women's Compression Top.jpg" alt="Women's Compression Top"></div>
-          <div class="title">Women's Compression Top</div>
-          <div class="price">$38.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-athletic-socks-3pack">
-          <div class="img"><img src="images/woman-products/Women's Athletic Socks (3-Pack).jpg" alt="Women's Athletic Socks (3-Pack)"></div>
-          <div class="title">Women's Athletic Socks (3-Pack)</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Leggings.jpg" alt="Kids Leggings"></div>
+          <div class="title">Kids Leggings</div>
+          <div class="price">$22.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Athletic Socks (5-Pack).jpg" alt="Kids Athletic Socks (5-Pack)"></div>
+          <div class="title">Kids Athletic Socks (5-Pack)</div>
+          <div class="price">$14.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Soccer Cleats.jpg" alt="Kids Soccer Cleats"></div>
+          <div class="title">Kids Soccer Cleats</div>
+          <div class="price">$49.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sweatpants.jpg" alt="Kids Sweatpants"></div>
+          <div class="title">Kids Sweatpants</div>
+          <div class="price">$24.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Baseball Cap.jpg" alt="Kids Baseball Cap"></div>
+          <div class="title">Kids Baseball Cap</div>
+          <div class="price">$12.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Swim Trunks.jpg" alt="Kids Swim Trunks"></div>
+          <div class="title">Kids Swim Trunks</div>
           <div class="price">$19.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-lightweight-jacket">
-          <div class="img"><img src="images/woman-products/Women's Lightweight Jacket.jpg" alt="Women's Lightweight Jacket"></div>
-          <div class="title">Women's Lightweight Jacket</div>
-          <div class="price">$59.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-training-hoodie">
-          <div class="img"><img src="images/woman-products/Women's Training Hoodie.jpg" alt="Women's Training Hoodie"></div>
-          <div class="title">Women's Training Hoodie</div>
-          <div class="price">$52.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-breathable-tank">
-          <div class="img"><img src="images/woman-products/Women's Breathable Tank.jpg" alt="Women's Breathable Tank"></div>
-          <div class="title">Women's Breathable Tank</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Tennis Shoes.jpg" alt="Kids Tennis Shoes"></div>
+          <div class="title">Kids Tennis Shoes</div>
+          <div class="price">$36.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Fleece Hoodie.jpg" alt="Kids Fleece Hoodie"></div>
+          <div class="title">Kids Fleece Hoodie</div>
+          <div class="price">$28.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Track Pants.jpg" alt="Kids Track Pants"></div>
+          <div class="title">Kids Track Pants</div>
           <div class="price">$26.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-athletic-shorts">
-          <div class="img"><img src="images/woman-products/Women's Athletic Shorts.jpg" alt="Women's Athletic Shorts"></div>
-          <div class="title">Women's Athletic Shorts</div>
-          <div class="price">$31.99</div>
-        </a>
-        <a class="card" href="product.html?id=womens-running-shoes">
-          <div class="img"><img src="images/woman-products/Women's Running Shoes.jpg" alt="Women's Running Shoes"></div>
-          <div class="title">Women's Running Shoes</div>
-          <div class="price">$94.99</div>
-        </a>
-        
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Sports Bag.jpg" alt="Kids Sports Bag"></div>
+          <div class="title">Kids Sports Bag</div>
+          <div class="price">$21.99</div>
+        </div>
+        <div class="card">
+          <div class="img"><img src="images/kids-products/Kids Skate Shoes.jpg" alt="Kids Skate Shoes"></div>
+          <div class="title">Kids Skate Shoes</div>
+          <div class="price">$42.99</div>
+        </div>
       </div>
 
     </div>
@@ -302,7 +318,3 @@
 
 </body>
 </html>
-<div class="icons">
-  <a href="Cart.html" class="icon" title="Shopping Cart">🛒</a>
-  <a href="Login.html" class="icon" title="My Account">👤</a>
-</div>

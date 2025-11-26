@@ -1,0 +1,268 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sportify - Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1014;
+      --card: #171a21;
+      --muted: #a1a7b0;
+      --accent: #e33b2d;
+      --border: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(160deg, #0f1014 0%, #0c0d12 45%, #141725 100%);
+      color: #eef0f3;
+      padding: 28px 18px 36px;
+      display: flex;
+      justify-content: center;
+    }
+    .page {
+      width: 1100px;
+      max-width: 100%;
+      background: #11131b;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(90deg, rgba(227,59,45,0.08), transparent 35%);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+    }
+    .brand img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      object-fit: cover;
+      background: #1f222a;
+    }
+    .actions { display: flex; gap: 10px; align-items: center; }
+    .btn {
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #1a1d26;
+      color: #eef0f3;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: rgba(227,59,45,0.4); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    main { padding: 18px 22px 26px; display: grid; gap: 16px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(227,59,45,0.12), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero h1 { margin: 0 0 6px; font-size: 22px; }
+    .hero p { margin: 0; color: var(--muted); }
+    .pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .pill { padding: 7px 10px; border-radius: 999px; background: #1a1d26; border: 1px solid var(--border); font-weight: 700; font-size: 12px; color: #fff; }
+
+    .grid { display: grid; gap: 14px; grid-template-columns: 1.1fr 0.9fr; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .card h2 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0 0 12px; color: var(--muted); }
+
+    form { display: grid; gap: 10px; }
+    label { font-weight: 700; font-size: 13px; }
+    input { width: 100%; padding: 10px 11px; border-radius: 10px; border: 1px solid var(--border); background: #0f1117; color: #fff; font-size: 14px; }
+
+    .orders { display: grid; gap: 10px; }
+    .order-row { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: #131620; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+    .order-row strong { display: block; }
+    .order-row .muted { color: var(--muted); font-size: 12px; }
+    .status { padding: 6px 10px; border-radius: 999px; font-weight: 800; font-size: 11px; border: 1px solid var(--border); }
+    .status.shipped { background: rgba(82,196,140,0.15); color: #c6f3dd; border-color: rgba(82,196,140,0.35); }
+    .status.prep { background: rgba(255,193,79,0.16); color: #ffe5b5; border-color: rgba(255,193,79,0.4); }
+    .status.return { background: rgba(227,59,45,0.14); color: #ffd7d2; border-color: rgba(227,59,45,0.4); }
+
+    .inline { display: flex; gap: 8px; flex-wrap: wrap; }
+    .helper { color: #78f8c6; font-weight: 700; font-size: 12px; }
+
+    @media (max-width: 940px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="HomePage.html">
+        <img src="images/logo2.png" alt="Sportify logo">
+        <span>SPORTIFY</span>
+      </a>
+      <div class="actions">
+        <a class="btn" href="HomePage.html">Shop</a>
+        <button class="btn" id="cartBtn" type="button">Cart</button>
+        <button class="btn" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Your profile</h1>
+          <p>Update your info and track your latest Sportify orders.</p>
+          <div class="pill-row">
+            <span class="pill" id="membershipTag">Member</span>
+            <span class="pill" id="emailTag">No email saved</span>
+          </div>
+        </div>
+        <div class="inline">
+          <span class="helper" id="saveStatus">Not saved yet</span>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Account details</h2>
+          <p>Edit your contact info for faster checkout.</p>
+          <form id="profileForm">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" placeholder="Enter your name" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="name@email.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="(+1) 555-123-1234" />
+            </div>
+            <div>
+              <label for="address">Address</label>
+              <input id="address" name="address" placeholder="Street and number" />
+            </div>
+            <div class="inline">
+              <div style="flex:1; min-width: 140px;">
+                <label for="city">City</label>
+                <input id="city" name="city" placeholder="City" />
+              </div>
+              <div style="width:120px;">
+                <label for="state">State</label>
+                <input id="state" name="state" placeholder="State" />
+              </div>
+              <div style="width:120px;">
+                <label for="zip">ZIP</label>
+                <input id="zip" name="zip" placeholder="ZIP" />
+              </div>
+            </div>
+            <div class="inline">
+              <button class="btn primary" type="submit">Save changes</button>
+              <button class="btn" type="button" id="cartShortcut">Go to cart</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Order history</h2>
+          <p>Your latest orders and statuses.</p>
+          <div class="orders" id="orders"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const mustBeLoggedIn = localStorage.getItem('sportifyLoggedIn') === 'true';
+      if (!mustBeLoggedIn) {
+        window.location.replace('Login.html');
+        return;
+      }
+
+      const form = document.getElementById('profileForm');
+      const saveStatus = document.getElementById('saveStatus');
+      const emailTag = document.getElementById('emailTag');
+      const membershipTag = document.getElementById('membershipTag');
+      const cartBtn = document.getElementById('cartBtn');
+      const cartShortcut = document.getElementById('cartShortcut');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const ordersBox = document.getElementById('orders');
+
+      const stored = JSON.parse(localStorage.getItem('sportifyProfile') || '{}');
+      const savedName = localStorage.getItem('sportifyName') || stored.name || '';
+      const savedEmail = localStorage.getItem('sportifyEmail') || stored.email || '';
+
+      const fields = ['name','email','phone','address','city','state','zip'];
+      fields.forEach(function(id) {
+        const el = document.getElementById(id);
+        if (stored[id]) el.value = stored[id];
+      });
+      emailTag.textContent = savedEmail || 'No email saved';
+      membershipTag.textContent = savedName ? savedName + " · Active" : 'Member';
+
+      const sampleOrders = [
+        { id: '#SP-1043', summary: 'AeroFlex jacket, Carbon trainer, Crew socks', date: 'Aug 12', amount: '$142.00', status: 'shipped' },
+        { id: '#SP-1036', summary: 'Velocity shorts, Aero tee', date: 'Aug 01', amount: '$76.00', status: 'prep' },
+        { id: '#SP-1029', summary: 'Recovery hoodie, Alpine cap', date: 'Jul 18', amount: '$98.00', status: 'return' }
+      ];
+      ordersBox.innerHTML = sampleOrders.map(function(order) {
+        return '<div class="order-row">'
+          + '<div><strong>' + order.id + ' · ' + order.amount + '</strong>'
+          + '<div class="muted">' + order.summary + '</div>'
+          + '<div class="muted">Placed ' + order.date + '</div></div>'
+          + '<span class="status ' + order.status + '">' + order.status.toUpperCase() + '</span>'
+          + '</div>';
+      }).join('');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const data = {};
+        fields.forEach(function(id) { data[id] = (document.getElementById(id).value || '').trim(); });
+        localStorage.setItem('sportifyProfile', JSON.stringify(data));
+        localStorage.setItem('sportifyLoggedIn', 'true');
+        localStorage.setItem('sportifyEmail', data.email || '');
+        localStorage.setItem('sportifyName', data.name || '');
+        saveStatus.textContent = 'Saved just now';
+        emailTag.textContent = data.email || 'No email saved';
+        membershipTag.textContent = (data.name ? data.name + ' · Active' : 'Member');
+      });
+
+      function goToCart() { window.location.href = 'cart.html'; }
+      cartBtn.addEventListener('click', goToCart);
+      cartShortcut.addEventListener('click', goToCart);
+      logoutBtn.addEventListener('click', function() {
+        localStorage.removeItem('sportifyLoggedIn');
+        window.location.href = 'Login.html';
+      });
+    })();
+  </script>
+</body>
+</html>

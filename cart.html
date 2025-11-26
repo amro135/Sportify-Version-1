@@ -83,6 +83,7 @@
       text-decoration: none;
       color: inherit;
       font-size: 16px;
+      border: none;
     }
     .icon:hover {
       background: var(--accent);
@@ -281,8 +282,8 @@
         </a>
       </div>
       <div class="icons">
-        <a href="Cart.html" class="icon" title="Shopping Cart">🛒</a>
-        <a href="Login.html" class="icon" title="My Account">👤</a>
+        <a href="Cart.html" class="icon" title="Shopping Cart">&#128722;</a>
+        <button class="icon" type="button" onclick="goToProfile()" title="My Account">&#128100;</button>
       </div>
     </header>
 
@@ -362,6 +363,11 @@
     const shippingEl = document.getElementById("shipping-val");
     const taxEl = document.getElementById("tax-val");
     const totalEl = document.getElementById("total-val");
+
+    function goToProfile() {
+      const loggedIn = localStorage.getItem("sportifyLoggedIn") === "true";
+      window.location.href = loggedIn ? "Profile.html" : "Login.html";
+    }
 
     function loadCart() {
       try {
@@ -455,3 +461,4 @@
   </script>
 </body>
 </html>
+

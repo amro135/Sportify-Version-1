@@ -74,6 +74,8 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: none;
+            color: inherit;
         }
         .icon:hover {
             background: #e63946;
@@ -206,7 +208,7 @@
       </div>
       <div class="icons">
         <a class="icon" href="cart.html" title="Shopping Cart">&#128722;</a>
-        <a class="icon" href="Login.html" title="My Account">&#128100;</a>
+        <button class="icon" type="button" onclick="goToProfile()" title="My Account">&#128100;</button>
       </div>
     </header>
 
@@ -298,6 +300,11 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function goToProfile() {
+      const loggedIn = localStorage.getItem('sportifyLoggedIn') === 'true';
+      window.location.href = loggedIn ? 'Profile.html' : 'Login.html';
+    }
   </script>
 
 </body>

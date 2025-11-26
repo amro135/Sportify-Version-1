@@ -128,6 +128,11 @@
 
             console.log("Login attempt (frontend only):", email);
 
+            // Mark the user as logged in for front-end navigation to Profile
+            localStorage.setItem("sportifyLoggedIn", "true");
+            localStorage.setItem("sportifyEmail", email);
+            localStorage.setItem("sportifyName", email.split("@")[0] || "Member");
+
             // Redirect to HomePage.html after (simulated) successful login
             window.location.href = "HomePage.html";
         }

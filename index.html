@@ -124,7 +124,12 @@
             }
 
             console.log("Signup info:", username, email, password);
-            alert("Signup function triggered");
+            // Save a lightweight login state for navigation
+            localStorage.setItem("sportifyLoggedIn", "true");
+            localStorage.setItem("sportifyEmail", email);
+            localStorage.setItem("sportifyName", username || email.split("@")[0] || "Member");
+            alert("Account created! Redirecting to your profile.");
+            window.location.href = "Profile.html";
         }
     </script>
 

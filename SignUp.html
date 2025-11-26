@@ -81,8 +81,13 @@
             if (password.length < 6) return alert("Password should be at least 6 characters.");
             if (password !== confirm) return alert("Passwords do not match.");
 
-            alert("Account created! You can now log in.");
-            window.location.href = "Login.html";
+            localStorage.setItem("sportifyLoggedIn", "true");
+            localStorage.setItem("sportifyEmail", email);
+            localStorage.setItem("sportifyName", name || email.split("@")[0] || "Member");
+            localStorage.setItem("sportifyProfile", JSON.stringify({ name, email }));
+
+            alert("Account created! Redirecting to your profile.");
+            window.location.href = "Profile.html";
         }
 
         document.getElementById("confirm").addEventListener("keypress", function (event) {

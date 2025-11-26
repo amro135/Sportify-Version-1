@@ -88,6 +88,8 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 16px;
+      border: none;
+      color: inherit;
     }
     .icon:hover {
       background: var(--accent);
@@ -263,7 +265,7 @@
       <!-- Navigation removed as requested -->
       <div class="icons">
         <a class="icon" href="Cart.html" title="Shopping Cart">&#128722;</a>
-        <a class="icon" href="Login.html" title="My Account">&#128100;</a>
+        <button class="icon" type="button" onclick="goToProfile()" title="My Account">&#128100;</button>
       </div>
     </header>
 
@@ -271,7 +273,7 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-content">
         <h1>UNLEASH YOUR<br/>POTENTIAL</h1>
-        <p>Performance gear made to move with you. Lightweight — durable — fast.</p>
+        <p>Performance gear made to move with you. Lightweight - durable - fast.</p>
         <a class="cta" href="#">SHOP NOW</a>
       </div>
     </section>
@@ -332,6 +334,11 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function goToProfile() {
+      const loggedIn = localStorage.getItem('sportifyLoggedIn') === 'true';
+      window.location.href = loggedIn ? 'Profile.html' : 'Login.html';
+    }
   </script>
 
 </body>

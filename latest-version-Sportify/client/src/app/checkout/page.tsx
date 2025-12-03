@@ -12,6 +12,13 @@ export default function CheckoutPage() {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState('card');
+    const [selectedCoin, setSelectedCoin] = useState<'BTC' | 'ETH' | 'USDT'>('BTC');
+
+    const cryptoAddresses: Record<'BTC' | 'ETH' | 'USDT', string> = {
+        BTC: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
+        ETH: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',
+        USDT: 'TYASr5UV6HEcXatwdFQfmLVUqQQQMUxHLS'
+    };
 
     const shipping = cartTotal > 50 ? 0 : 10;
     const total = cartTotal + shipping;
@@ -118,7 +125,14 @@ export default function CheckoutPage() {
                                     <div className="space-y-4">
                                         <div className="grid grid-cols-3 gap-2">
                                             {['BTC', 'ETH', 'USDT'].map(coin => (
-                                                <div key={coin} className="p-2 border border-gray-200 dark:border-gray-700 rounded-lg text-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-colors">
+                                                <div
+                                                    key={coin}
+                                                    onClick={() => setSelectedCoin(coin as 'BTC' | 'ETH' | 'USDT')}
+                                                    className={`p-2 border rounded-lg text-center cursor-pointer transition-colors ${selectedCoin === coin
+                                                        ? 'border-primary bg-primary/10 text-primary font-bold'
+                                                        : 'border-gray-200 dark:border-gray-700 hover:border-primary hover:bg-primary/5'
+                                                        }`}
+                                                >
                                                     <span className="font-bold">{coin}</span>
                                                 </div>
                                             ))}
@@ -126,10 +140,10 @@ export default function CheckoutPage() {
                                         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl text-center border border-gray-200 dark:border-gray-700">
                                             <p className="text-xs text-gray-500 mb-2">Send {total.toFixed(2)} USD equivalent to:</p>
                                             <div className="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 font-mono text-xs break-all">
-                                                0x71C7656EC7ab88b098defB751B7401B5f6d8976F
+                                                {cryptoAddresses[selectedCoin]}
                                             </div>
                                             <div className="w-32 h-32 bg-white mx-auto p-2 rounded-lg mb-2">
-                                                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x71C7656EC7ab88b098defB751B7401B5f6d8976F`} alt="QR Code" className="w-full h-full" />
+                                                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${cryptoAddresses[selectedCoin]}`} alt="QR Code" className="w-full h-full" />
                                             </div>
                                             <p className="text-xs text-green-600 font-medium animate-pulse">Waiting for transaction...</p>
                                         </div>

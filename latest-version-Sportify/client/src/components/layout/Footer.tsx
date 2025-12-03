@@ -29,10 +29,10 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold mb-4 text-white">Shop</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li><Link href="/products?category=running" className="hover:text-primary">Running</Link></li>
-                            <li><Link href="/products?category=football" className="hover:text-primary">Football</Link></li>
-                            <li><Link href="/products?category=basketball" className="hover:text-primary">Basketball</Link></li>
-                            <li><Link href="/products?category=training" className="hover:text-primary">Training</Link></li>
+                            <li><Link href="/products?category=Running Shoes" className="hover:text-primary">Running Shoes</Link></li>
+                            <li><Link href="/products?category=Equipment" className="hover:text-primary">Equipment</Link></li>
+                            <li><Link href="/products?category=Apparel" className="hover:text-primary">Apparel</Link></li>
+                            <li><Link href="/products?category=Accessories" className="hover:text-primary">Accessories</Link></li>
                         </ul>
                     </div>
 
@@ -42,8 +42,8 @@ export function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
                             <li><Link href="/contact" className="hover:text-primary">Contact</Link></li>
-                            <li><Link href="/booking" className="hover:text-primary">Book a Coach</Link></li>
-                            <li><Link href="/careers" className="hover:text-primary">Careers</Link></li>
+                            <li><Link href="/coaching" className="hover:text-primary">Coaching</Link></li>
+                            <li><Link href="/customize" className="hover:text-primary">AI Recommender</Link></li>
                         </ul>
                     </div>
 

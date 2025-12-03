@@ -30,9 +30,9 @@ export default function CartPage() {
             <div className="flex flex-col lg:flex-row gap-12">
                 {/* Cart Items */}
                 <div className="flex-1 space-y-6">
-                    {cartItems.map((item) => (
+                    {cartItems.map((item, index) => (
                         <div
-                            key={item.id}
+                            key={`${item.id}-${item.size || 'default'}-${index}`}
                             className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800"
                         >
                             <div className="relative w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
@@ -53,6 +53,7 @@ export default function CartPage() {
                                     <button
                                         onClick={() => removeFromCart(item.id)}
                                         className="text-gray-400 hover:text-red-500 transition-colors"
+                                        aria-label="Remove item"
                                     >
                                         <Trash2 className="w-5 h-5" />
                                     </button>

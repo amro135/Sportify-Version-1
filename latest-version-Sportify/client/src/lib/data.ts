@@ -296,12 +296,12 @@ export const products = [
     },
     {
         id: "32",
-        name: "2kg Dumbbells Pair",
-        price: 24.99,
+        name: "2kg Gym Dumbbell",
+        price: 30.00,
         category: "Equipment",
         rating: 4.5,
-        image: "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=2070&auto=format&fit=crop",
-        description: "Neoprene coated 2kg dumbbells for toning"
+        image: "/dumbbell-2kg.jpg",
+        description: "Professional 2kg gym dumbbell with ergonomic grip"
     }
 ];
 

@@ -16,12 +16,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Database Connection
+// Database Connection (optional for demo)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/sportify';
 
 mongoose.connect(MONGODB_URI)
-    .then(() => console.log('MongoDB Connected'))
-    .catch((err) => console.error('MongoDB Connection Error:', err));
+    .then(() => console.log('✅ MongoDB Connected'))
+    .catch((err) => {
+        console.log('⚠️  Running without MongoDB (using in-memory storage for demo)');
+    });
 
 // Routes
 app.use('/api/users', authRoutes);

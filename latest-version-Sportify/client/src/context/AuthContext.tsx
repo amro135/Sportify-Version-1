@@ -9,13 +9,14 @@ interface User {
     email: string;
     isAdmin: boolean;
     token: string;
+    profileImage?: string;
 }
 
 interface AuthContextType {
     user: User | null;
     login: (userData: User) => void;
     logout: () => void;
-    updateUser: (userData: Partial<User>) => void;
+    updateProfile: (userData: Partial<User>) => void;
     isAuthenticated: boolean;
 }
 
@@ -44,7 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         router.push("/login");
     };
 
-    const updateUser = (updatedData: Partial<User>) => {
+    const updateProfile = (updatedData: Partial<User>) => {
         if (user) {
             const newUser = { ...user, ...updatedData };
             setUser(newUser);
@@ -53,7 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, updateUser, isAuthenticated: !!user }}>
+        <AuthContext.Provider value={{ user, login, logout, updateProfile, isAuthenticated: !!user }}>
             {children}
         </AuthContext.Provider>
     );

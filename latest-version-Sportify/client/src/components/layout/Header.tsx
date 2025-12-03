@@ -9,13 +9,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NavBar } from "../ui/tubelight-navbar";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/context/FavoritesContext";
+import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/lib/cartContext";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [cartCount, setCartCount] = useState(2); // Mock count
     const [isScrolled, setIsScrolled] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const { favorites } = useFavorites();
+    const { user } = useAuth();
+    const { cartCount } = useCart();
     const router = useRouter();
 
     useEffect(() => {
@@ -98,12 +101,31 @@ export function Header() {
                         )}
                     </Link>
 
-                    <Link href="/login" className="hidden md:block">
-                        <Button variant="ghost" size="sm" className="text-white hover:bg-white/10 hover:text-primary">
-                            <User className="w-5 h-5 mr-2" />
-                            Login
-                        </Button>
-                    </Link>
+                    {user ? (
+                        <Link href="/profile" className="hidden md:flex items-center gap-2 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                            {user.profileImage ? (
+                                <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                                    <img
+                                        src={user.profileImage}
+                                        alt={user.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                                    {user.name.charAt(0).toUpperCase()}
+                                </div>
+                            )}
+                            <span className="text-white font-medium">{user.name}</span>
+                        </Link>
+                    ) : (
+                        <Link href="/login" className="hidden md:block">
+                            <Button variant="ghost" size="sm" className="text-white hover:bg-white/10 hover:text-primary">
+                                <User className="w-5 h-5 mr-2" />
+                                Login
+                            </Button>
+                        </Link>
+                    )}
 
                     {/* Mobile Menu Button */}
                     <button

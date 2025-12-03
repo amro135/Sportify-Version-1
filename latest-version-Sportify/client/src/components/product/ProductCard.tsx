@@ -6,6 +6,7 @@ import { Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "../ui/Button";
 import { motion } from "framer-motion";
 import { useFavorites } from "@/context/FavoritesContext";
+import { useCart } from "@/lib/cartContext";
 
 interface ProductCardProps {
     id: string;
@@ -18,12 +19,25 @@ interface ProductCardProps {
 
 export function ProductCard({ id, name, price, image, category, rating }: ProductCardProps) {
     const { isFavorite, toggleFavorite } = useFavorites();
+    const { addToCart } = useCart();
     const favorited = isFavorite(id);
 
     const handleFavoriteClick = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
         toggleFavorite(id);
+    };
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart({
+            id,
+            name,
+            price,
+            image,
+            qty: 1
+        });
     };
 
     return (
@@ -46,8 +60,8 @@ export function ProductCard({ id, name, price, image, category, rating }: Produc
                     whileTap={{ scale: 0.9 }}
                     onClick={handleFavoriteClick}
                     className={`absolute top-3 right-3 p-2 backdrop-blur-sm rounded-full transition-all ${favorited
-                            ? "bg-red-500 text-white hover:bg-red-600"
-                            : "bg-white/80 dark:bg-black/50 text-gray-600 dark:text-gray-300 hover:text-red-500 hover:bg-white"
+                        ? "bg-red-500 text-white hover:bg-red-600"
+                        : "bg-white/80 dark:bg-black/50 text-gray-600 dark:text-gray-300 hover:text-red-500 hover:bg-white"
                         }`}
                     aria-label={favorited ? "Remove from wishlist" : "Add to wishlist"}
                 >
@@ -57,10 +71,7 @@ export function ProductCard({ id, name, price, image, category, rating }: Produc
                     <Button
                         size="sm"
                         className="w-full"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            // Add to cart logic
-                        }}
+                        onClick={handleAddToCart}
                         aria-label={`Add ${name} to cart`}
                     >
                         <ShoppingCart className="w-4 h-4 mr-2" />

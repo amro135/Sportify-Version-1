@@ -3,7 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 
 import { Button } from "@/components/ui/Button";
-import { User, Package, MapPin, LogOut } from "lucide-react";
+import { User, Package, MapPin, LogOut, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
 export default function ProfilePage() {
@@ -32,14 +32,34 @@ export default function ProfilePage() {
                 {/* Sidebar / User Info */}
                 <div className="w-full md:w-80 space-y-6">
                     <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 text-center">
-                        <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
-                            <User className="w-10 h-10" />
+                        <div className="w-24 h-24 mx-auto mb-4 relative">
+                            {user.profileImage ? (
+                                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/10">
+                                    <img
+                                        src={user.profileImage}
+                                        alt={user.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                    <User className="w-10 h-10" />
+                                </div>
+                            )}
                         </div>
                         <h2 className="text-xl font-bold mb-1">{user.name}</h2>
                         <p className="text-gray-500 mb-6">{user.email}</p>
-                        <Button variant="outline" className="w-full mb-2">
-                            Edit Profile
-                        </Button>
+                        <Link href="/products" className="block w-full mb-2">
+                            <Button variant="primary" className="w-full">
+                                <ShoppingBag className="w-4 h-4 mr-2" />
+                                Browse Products
+                            </Button>
+                        </Link>
+                        <Link href="/profile/edit" className="block w-full mb-2">
+                            <Button variant="outline" className="w-full">
+                                Edit Profile
+                            </Button>
+                        </Link>
                         <Button
                             variant="ghost"
                             className="w-full text-red-500 hover:bg-red-50 hover:text-red-600"
@@ -90,7 +110,11 @@ export default function ProfilePage() {
                                             {order.status}
                                         </div>
                                     </div>
-                                    <Button variant="outline" size="sm">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => alert(`Order #${order.id} details:\n\nStatus: ${order.status}\nTotal: $${order.total}\nItems: ${order.items}\n\n(Full receipt view coming soon)`)}
+                                    >
                                         View Details
                                     </Button>
                                 </div>
